@@ -36,7 +36,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-           env:
+          env:
             - name: DB_USER
               value: {{ .Values.env.dbuser }}
             - name: DB_PASSWORD
@@ -48,11 +48,10 @@ spec:
             - name: DB_HOST
               value: {{ .Values.env.dbhost }}
             - name: NODE_DOCKER_PORT
-              value: {{ .Values.env.nodedockerport }}
+              value: {{ .Values.env.nodedockerport }}        
           ports:
             - name: http
-              targetPort: {{ .Values.service.targetPort }}
-              NodePort: {{ .Values.service.nodePort }}
+              containerPort: "8080"
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
