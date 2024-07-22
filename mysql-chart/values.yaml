@@ -4,11 +4,17 @@
 
 replicaCount: 1
 
+env:
+  dbuser: "root"
+  dbpass: "123456"
+  dbname: "bezkoder_db"
+  dbport: "3306"
+
 image:
-  repository: nginx
+  repository: mysql:5.7
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "mysql"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,7 +47,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 3306
 
 ingress:
   enabled: false
@@ -71,19 +77,19 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
+# livenessProbe:
+#   httpGet:
+#     path: /
+#     port: http
+# readinessProbe:
+#   httpGet:
+#     path: /
+#     port: http
 
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 

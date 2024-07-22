@@ -4,8 +4,16 @@
 
 replicaCount: 1
 
+env:
+  dbuser: "root"
+  dbpass: "123456"
+  dbname: "bezkoder_db"
+  dbport: "3306"
+  dbhost: ""
+  nodedockerport: "8080"
+
 image:
-  repository: nginx
+  repository: chetanhari/nodemysql: latest
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -40,8 +48,11 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30007
 
 ingress:
   enabled: false
