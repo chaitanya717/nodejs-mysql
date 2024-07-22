@@ -13,7 +13,7 @@ env:
   nodedockerport: "8080"
 
 image:
-  repository: chetanhari/nodemysql: latest
+  repository: chetanhari/nodemysql:latest
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -82,14 +82,14 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
+# livenessProbe:
+#   httpGet:
+#     path: /
+#     port: http
+# readinessProbe:
+#   httpGet:
+#     path: /
+#     port: http
 
 autoscaling:
   enabled: false
