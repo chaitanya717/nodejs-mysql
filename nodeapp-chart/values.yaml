@@ -9,7 +9,7 @@ env:
   dbpass: "123456"
   dbname: "bezkoder_db"
   dbport: "3306"
-  dbhost: ""
+  dbhost: "10.100.163.108"
   nodedockerport: "8080"
 
 image:
