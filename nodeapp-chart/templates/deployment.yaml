@@ -38,17 +38,17 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: DB_USER
-              value: {{ .Values.env.dbuser }}
+              value: "root"
             - name: DB_PASSWORD
-              value: {{ .Values.env.dbpass }}
+              value: "123456"
             - name: DB_NAME
-              value: {{ .Values.env.dbname }}
+              value: "bezcoder_bz"
             - name: DB_PORT
-              value: {{ .Values.env.dbport }}
+              value: "3306"
             - name: DB_HOST
-              value: {{ .Values.env.dbhost }}
+              value: ""
             - name: NODE_DOCKER_PORT
-              value: {{ .Values.env.nodedockerport }}        
+              value: "8080"       
           ports:
             - name: http
               containerPort: "8080"
